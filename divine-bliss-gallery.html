@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Divine Bliss Gallery — Luxury Living Real Estate Project Portfolio by The Digitech Solutions." />
+    <meta name="theme-color" content="#0B1120" />
+    <title>Divine Bliss Project Gallery — The Digitech Solutions</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .gallery-header {
+        padding: 80px 0 40px;
+        text-align: center;
+      }
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 600;
+        color: var(--brand);
+        text-decoration: none;
+        margin-bottom: 24px;
+        font-size: 14px;
+        transition: transform 0.2s;
+      }
+      .back-link:hover {
+        transform: translateX(-4px);
+      }
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-bottom: 80px;
+      }
+      .gallery-item {
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        background: var(--surface-2);
+        border: 2px solid var(--border-strong);
+        position: relative;
+        cursor: pointer;
+        transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
+      }
+      .gallery-item:hover {
+        border-color: var(--brand);
+        transform: translateY(-4px);
+      }
+      .gallery-item img {
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.6s var(--ease);
+      }
+      .gallery-item:hover img {
+        transform: scale(1.05);
+      }
+      
+      @media (max-width: 640px) {
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-inner">
+        <a class="brand" href="index.html">
+          <img class="brand-logo-img" src="logo-transferent.png" onerror="this.onerror=null;this.src='logo.svg';" alt="Digitech Solutions" width="320" height="85" />
+        </a>
+        <div class="nav-actions">
+           <a class="btn btn-primary" href="index.html#work">Back to Work</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="gallery-header">
+        <a href="index.html#work" class="back-link">
+          <span aria-hidden="true">←</span> Back to Portfolio
+        </a>
+        <h1 class="section-title">Divine Bliss <span class="serif-accent">Gallery</span></h1>
+        <p class="section-sub">Luxury Residential · Elegant Design</p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="assets/imges/divine-1.jpg" alt="Divine Bliss View 1" loading="lazy"></div>
+        <div class="gallery-item"><img src="assets/imges/divine-2.jpg" alt="Divine Bliss View 2" loading="lazy"></div>
+        <div class="gallery-item"><img src="assets/imges/divine-3.jpg" alt="Divine Bliss View 3" loading="lazy"></div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <p>© 2026 The Digitech Solutions. All rights reserved.</p>
+          <p>Crafted for Real Estate Excellence</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

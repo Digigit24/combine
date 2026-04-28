@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Real Estate Portfolio Gallery — Luxury Residential & Commercial projects by The Digitech Solutions." />
+    <meta name="theme-color" content="#0B1120" />
+    <title>Real Estate Portfolio Gallery — The Digitech Solutions</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .gallery-header {
+        padding: 80px 0 40px;
+        text-align: center;
+      }
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 600;
+        color: var(--brand);
+        text-decoration: none;
+        margin-bottom: 24px;
+        font-size: 14px;
+        transition: transform 0.2s;
+      }
+      .back-link:hover {
+        transform: translateX(-4px);
+      }
+      
+      /* Tabs Styling - Light/Premium feel as per image */
+      .tabs-wrapper {
+        background: rgba(255, 255, 255, 0.03);
+        padding: 40px 0;
+        border-top: 1px solid var(--border-subtle);
+        border-bottom: 1px solid var(--border-subtle);
+        margin-bottom: 60px;
+      }
+      .tabs-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      .tab-btn {
+        padding: 14px 28px;
+        border-radius: 100px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: white; /* Following the image's light feel */
+        color: #1e293b; /* Dark text for light button */
+        font-weight: 600;
+        font-size: 15px;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+      .tab-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        border-color: var(--brand);
+      }
+      .tab-btn.active {
+        background: var(--brand);
+        color: white;
+        border-color: var(--brand);
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+        margin-bottom: 100px;
+      }
+      .gallery-item {
+        border-radius: 20px;
+        overflow: hidden;
+        background: var(--surface-2);
+        border: 1px solid var(--border-strong);
+        position: relative;
+        cursor: pointer;
+        transition: all 0.5s var(--ease);
+      }
+      .gallery-item.hidden {
+        display: none;
+      }
+      .gallery-item:hover {
+        border-color: var(--brand);
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+      .gallery-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.8s var(--ease);
+      }
+      .gallery-item:hover img {
+        transform: scale(1.1);
+      }
+      
+      @media (max-width: 960px) {
+        .gallery-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+        }
+      }
+      @media (max-width: 640px) {
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
+        .tabs-container {
+          gap: 8px;
+        }
+        .tab-btn {
+          padding: 10px 18px;
+          font-size: 13px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-inner">
+        <a class="brand" href="index.html">
+          <img class="brand-logo-img" src="logo-transferent.png" onerror="this.onerror=null;this.src='logo.svg';" alt="Digitech Solutions" width="320" height="85" />
+        </a>
+        <div class="nav-actions">
+           <a class="btn btn-primary" href="index.html#work">Back to Work</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="gallery-header">
+          <a href="index.html#work" class="back-link">
+            <span aria-hidden="true">←</span> Back to Portfolio
+          </a>
+          <h1 class="section-title">Real Estate <span class="serif-accent">Portfolio</span></h1>
+          <p class="section-sub">Luxury Residential · Commercial · Urban Living</p>
+        </div>
+      </div>
+
+      <div class="tabs-wrapper">
+        <div class="tabs-container">
+          <button class="tab-btn active" data-filter="all">All Photos</button>
+          <button class="tab-btn" data-filter="capri">Capri</button>
+          <button class="tab-btn" data-filter="tristar">Tristar</button>
+          <button class="tab-btn" data-filter="miraya">Miraya</button>
+          <button class="tab-btn" data-filter="samarth">Samarth</button>
+          <button class="tab-btn" data-filter="divine">Divine Bliss</button>
+          <button class="tab-btn" data-filter="megaverse">Megaverse</button>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Capri -->
+          <div class="gallery-item" data-category="capri"><img src="assets/imges/Capri-1.jpg" alt="Capri Project" loading="lazy"></div>
+          <div class="gallery-item" data-category="capri"><img src="assets/imges/Capri-2.jpg" alt="Capri Project" loading="lazy"></div>
+          <div class="gallery-item" data-category="capri"><img src="assets/imges/Capri-3.jpg" alt="Capri Project" loading="lazy"></div>
+          
+          <!-- Tristar -->
+          <div class="gallery-item" data-category="tristar"><img src="assets/imges/tristar-1.jpg" alt="Tristar Project" loading="lazy"></div>
+          <div class="gallery-item" data-category="tristar"><img src="assets/imges/tristar-2.jpg" alt="Tristar Project" loading="lazy"></div>
+          <div class="gallery-item" data-category="tristar"><img src="assets/imges/tristar-3.jpg" alt="Tristar Project" loading="lazy"></div>
+
+          <!-- Miraya -->
+          <div class="gallery-item" data-category="miraya"><img src="assets/imges/Mirya-1.jpg" alt="Miraya Project" loading="lazy"></div>
+          <div class="gallery-item" data-category="miraya"><img src="assets/imges/Mirya-2.jpg" alt="Miraya Project" loading="lazy"></div>
+          <div class="gallery-item" data-category="miraya"><img src="assets/imges/Mirya-3.jpg" alt="Miraya Project" loading="lazy"></div>
+
+          <!-- Samarth -->
+          <div class="gallery-item" data-category="samarth"><img src="assets/imges/Samarth-1.jpg" alt="Samarth Project" loading="lazy"></div>
+          <div class="gallery-item" data-category="samarth"><img src="assets/imges/samarth-2.jpg" alt="Samarth Project" loading="lazy"></div>
+          <div class="gallery-item" data-category="samarth"><img src="assets/imges/samarth-3.jpg" alt="Samarth Project" loading="lazy"></div>
+
+          <!-- Divine Bliss -->
+          <div class="gallery-item" data-category="divine"><img src="assets/imges/divine-1.jpg" alt="Divine Bliss" loading="lazy"></div>
+          <div class="gallery-item" data-category="divine"><img src="assets/imges/divine-2.jpg" alt="Divine Bliss" loading="lazy"></div>
+          <div class="gallery-item" data-category="divine"><img src="assets/imges/divine-3.jpg" alt="Divine Bliss" loading="lazy"></div>
+
+          <!-- Megaverse -->
+          <div class="gallery-item" data-category="megaverse"><img src="assets/imges/Megaverse-1.jpg" alt="Megaverse Project" loading="lazy"></div>
+          <div class="gallery-item" data-category="megaverse"><img src="assets/imges/Megaverse-2.jpg" alt="Megaverse Project" loading="lazy"></div>
+          <div class="gallery-item" data-category="megaverse"><img src="assets/imges/Megaverse-3.jpg" alt="Megaverse Project" loading="lazy"></div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <p>© 2026 The Digitech Solutions. All rights reserved.</p>
+          <p>Crafted for Real Estate Excellence</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        tabBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            // Update active tab
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filter = btn.getAttribute('data-filter');
+
+            galleryItems.forEach(item => {
+              if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                item.classList.remove('hidden');
+                item.style.opacity = '1';
+                item.style.scale = '1';
+              } else {
+                item.classList.add('hidden');
+                item.style.opacity = '0';
+                item.style.scale = '0.9';
+              }
+            });
+          });
+        });
+      });
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

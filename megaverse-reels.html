@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Megaverse Instagram Reels — Explore modern residential highlights and project discovery content." />
+    <meta name="theme-color" content="#0B1120" />
+    <title>Megaverse Instagram Reels — The Digitech Solutions</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .reels-header {
+        padding: 80px 0 40px;
+        text-align: center;
+      }
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 600;
+        color: var(--brand);
+        text-decoration: none;
+        margin-bottom: 24px;
+        font-size: 14px;
+        transition: transform 0.2s;
+      }
+      .back-link:hover {
+        transform: translateX(-4px);
+      }
+      .reels-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 32px;
+        margin-bottom: 80px;
+      }
+      .reel-container {
+        width: 100%;
+        max-width: 400px;
+        background: var(--surface);
+        border: 2px solid var(--border-strong);
+        border-radius: var(--radius-xl);
+        overflow: hidden;
+        transition: all 0.3s var(--ease);
+      }
+      .reel-container:hover {
+        transform: translateY(-8px);
+        border-color: var(--brand);
+        box-shadow: var(--shadow-lg);
+      }
+      
+      .instagram-media {
+        margin: 0 !important;
+        width: 100% !important;
+        min-width: 326px !important;
+        border-radius: var(--radius-xl) !important;
+      }
+
+      @media (max-width: 640px) {
+        .reels-grid {
+          gap: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-inner">
+        <a class="brand" href="index.html">
+          <img class="brand-logo-img" src="logo-transferent.png" onerror="this.onerror=null;this.src='logo.svg';" alt="Digitech Solutions" width="320" height="85" />
+        </a>
+        <div class="nav-actions">
+           <a class="btn btn-primary" href="index.html#work">Back to Work</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="reels-header">
+        <a href="index.html#work" class="back-link">
+          <span aria-hidden="true">←</span> Back to Portfolio
+        </a>
+        <h1 class="section-title">Megaverse <span class="serif-accent">Live Reels</span></h1>
+        <p class="section-sub">Modern Residential · Project Discovery · Interactive Highlights</p>
+      </div>
+
+      <div class="reels-grid">
+        <!-- Reel 1: Official CP meet & project highlights -->
+        <div class="reel-container">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DTfWhMsDUe1/" data-instgrm-version="14"></blockquote>
+        </div>
+
+        <!-- Reel 2: Project walkthrough -->
+        <div class="reel-container">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DV2f3glyPpH/" data-instgrm-version="14"></blockquote>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <p>© 2026 The Digitech Solutions. All rights reserved.</p>
+          <p>Digital Excellence Engineered for Scale</p>
+        </div>
+      </div>
+    </footer>
+
+    <script async src="//www.instagram.com/embed.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

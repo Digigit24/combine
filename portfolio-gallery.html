@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Global Project Portfolio Gallery — The Digitech Solutions. Explore our complete work across luxury residential, plotted developments and premium real estate projects." />
+    <meta name="theme-color" content="#0B1120" />
+    <title>Complete Project Gallery — The Digitech Solutions</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .gallery-header {
+        padding: 80px 0 40px;
+        text-align: center;
+      }
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 600;
+        color: var(--brand);
+        text-decoration: none;
+        margin-bottom: 24px;
+        font-size: 14px;
+        transition: transform 0.2s;
+      }
+      .back-link:hover {
+        transform: translateX(-4px);
+      }
+
+      /* Filter Bar */
+      .filter-bar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 48px;
+        position: sticky;
+        top: 80px;
+        z-index: 10;
+        background: color-mix(in srgb, var(--bg) 80%, transparent);
+        backdrop-filter: blur(8px);
+        padding: 12px 0;
+      }
+      .filter-btn {
+        padding: 10px 24px;
+        border-radius: 999px;
+        background: var(--surface);
+        border: 1px solid var(--border-strong);
+        color: var(--text-dim);
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.3s var(--ease);
+      }
+      .filter-btn:hover {
+        background: var(--surface-2);
+        border-color: var(--brand);
+        color: var(--text);
+      }
+      .filter-btn.active {
+        background: var(--brand);
+        color: #0B1220;
+        border-color: var(--brand);
+        box-shadow: 0 10px 20px -10px color-mix(in srgb, var(--brand) 50%, transparent);
+      }
+
+      .gallery-grid {
+        column-count: 3;
+        column-gap: 24px;
+        margin-bottom: 80px;
+        transition: opacity 0.4s var(--ease);
+      }
+      .gallery-item {
+        break-inside: avoid;
+        margin-bottom: 24px;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        background: var(--surface-2);
+        border: 2px solid var(--border-strong);
+        position: relative;
+        cursor: pointer;
+        transition: all 0.4s var(--ease);
+        display: block;
+      }
+      .gallery-item:hover {
+        border-color: var(--brand);
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+      }
+      .gallery-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.6s var(--ease);
+      }
+      .gallery-item:hover img {
+        transform: scale(1.05);
+      }
+      .gallery-item .item-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.8));
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 20px;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .gallery-item:hover .item-overlay {
+        opacity: 1;
+      }
+      .item-category {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--brand);
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+      .item-title {
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+      }
+      
+      /* Animation for filtering */
+      .gallery-item.hidden {
+        display: none;
+      }
+
+      @media (max-width: 640px) {
+        .gallery-grid {
+          column-count: 1;
+        }
+        .gallery-header {
+          padding: 60px 0 32px;
+        }
+        .filter-bar {
+            gap: 8px;
+            top: 72px;
+        }
+        .filter-btn {
+            padding: 8px 18px;
+            font-size: 13px;
+        }
+      }
+      @media (max-width: 960px) and (min-width: 641px) {
+        .gallery-grid {
+          column-count: 2;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-inner">
+        <a class="brand" href="index.html">
+          <img class="brand-logo-img" src="logo-transferent.png" onerror="this.onerror=null;this.src='logo.svg';" alt="Digitech Solutions" width="320" height="85" />
+        </a>
+        <div class="nav-actions">
+           <a class="btn btn-primary" href="index.html#work">Back to Home</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="gallery-header">
+        <a href="index.html#work" class="back-link">
+          <span aria-hidden="true">←</span> Back to Home
+        </a>
+        <h1 class="section-title">Complete <span class="serif-accent">Gallery</span></h1>
+        <p class="section-sub">A comprehensive showcase of our digital and architectural portfolio</p>
+      </div>
+
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-category="all">All Photos (48)</button>
+        <button class="filter-btn" data-category="capri">Capri (11)</button>
+        <button class="filter-btn" data-category="tristar">Tristar (4)</button>
+        <button class="filter-btn" data-category="miraya">Miraya (12)</button>
+        <button class="filter-btn" data-category="samarth">Samarth (6)</button>
+        <button class="filter-btn" data-category="divine">Divine Bliss (3)</button>
+        <button class="filter-btn" data-category="megaverse">Megaverse (12)</button>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid">
+        
+        <!-- Capri (11) -->
+        <div class="gallery-item" data-category="capri"><img src="assets/imges/Capri-1.jpg" alt="Capri 1" loading="lazy"><div class="item-overlay"><span class="item-category">Capri</span><span class="item-title">Luxury Residential</span></div></div>
+        <div class="gallery-item" data-category="capri"><img src="assets/imges/Capri-2.jpg" alt="Capri 2" loading="lazy"><div class="item-overlay"><span class="item-category">Capri</span><span class="item-title">Premium View</span></div></div>
+        <div class="gallery-item" data-category="capri"><img src="assets/imges/Capri-3.jpg" alt="Capri 3" loading="lazy"><div class="item-overlay"><span class="item-category">Capri</span><span class="item-title">Architecture</span></div></div>
+        <div class="gallery-item" data-category="capri"><img src="assets/imges/Capri-4.jpg" alt="Capri 4" loading="lazy"><div class="item-overlay"><span class="item-category">Capri</span><span class="item-title">Modern Living</span></div></div>
+        <div class="gallery-item" data-category="capri"><img src="assets/imges/Capri-5.jpg" alt="Capri 5" loading="lazy"><div class="item-overlay"><span class="item-category">Capri</span><span class="item-title">Exterior Detail</span></div></div>
+        <div class="gallery-item" data-category="capri"><img src="assets/imges/Capri-6.jpg" alt="Capri 6" loading="lazy"><div class="item-overlay"><span class="item-category">Capri</span><span class="item-title">Lifestyle</span></div></div>
+        <div class="gallery-item" data-category="capri"><img src="assets/imges/Capri-7.jpg" alt="Capri 7" loading="lazy"><div class="item-overlay"><span class="item-category">Capri</span><span class="item-title">Night View</span></div></div>
+        <div class="gallery-item" data-category="capri"><img src="assets/imges/Capri-8.jpg" alt="Capri 8" loading="lazy"><div class="item-overlay"><span class="item-category">Capri</span><span class="item-title">Facade</span></div></div>
+        <div class="gallery-item" data-category="capri"><img src="assets/imges/Capri-9.jpg" alt="Capri 9" loading="lazy"><div class="item-overlay"><span class="item-category">Capri</span><span class="item-title">Aerial View</span></div></div>
+        <div class="gallery-item" data-category="capri"><img src="assets/imges/Capri-10.jpg" alt="Capri 10" loading="lazy"><div class="item-overlay"><span class="item-category">Capri</span><span class="item-title">Evening Glow</span></div></div>
+        <div class="gallery-item" data-category="capri"><img src="assets/imges/Capri-11.jpg" alt="Capri 11" loading="lazy"><div class="item-overlay"><span class="item-category">Capri</span><span class="item-title">Structural Detail</span></div></div>
+
+        <!-- Megaverse (12) -->
+        <div class="gallery-item" data-category="megaverse"><img src="assets/imges/Megaverse-1.jpg" alt="Megaverse 1" loading="lazy"><div class="item-overlay"><span class="item-category">Megaverse</span><span class="item-title">Next-Gen Living</span></div></div>
+        <div class="gallery-item" data-category="megaverse"><img src="assets/imges/Megaverse-2.jpg" alt="Megaverse 2" loading="lazy"><div class="item-overlay"><span class="item-category">Megaverse</span><span class="item-title">High-Tech Homes</span></div></div>
+        <div class="gallery-item" data-category="megaverse"><img src="assets/imges/Megaverse-3.jpg" alt="Megaverse 3" loading="lazy"><div class="item-overlay"><span class="item-category">Megaverse</span><span class="item-title">Modern Design</span></div></div>
+        <div class="gallery-item" data-category="megaverse"><img src="assets/imges/Megaverse-4.jpg" alt="Megaverse 4" loading="lazy"><div class="item-overlay"><span class="item-category">Megaverse</span><span class="item-title">Lifestyle Hub</span></div></div>
+        <div class="gallery-item" data-category="megaverse"><img src="assets/imges/Megaverse-5.jpg" alt="Megaverse 5" loading="lazy"><div class="item-overlay"><span class="item-category">Megaverse</span><span class="item-title">Architectural Marvel</span></div></div>
+        <div class="gallery-item" data-category="megaverse"><img src="assets/imges/Megaverse-6.jpg" alt="Megaverse 6" loading="lazy"><div class="item-overlay"><span class="item-category">Megaverse</span><span class="item-title">Premium Space</span></div></div>
+        <div class="gallery-item" data-category="megaverse"><img src="assets/imges/Megaverse-7.jpg" alt="Megaverse 7" loading="lazy"><div class="item-overlay"><span class="item-category">Megaverse</span><span class="item-title">Skyline View</span></div></div>
+        <div class="gallery-item" data-category="megaverse"><img src="assets/imges/Megaverse-8.jpg" alt="Megaverse 8" loading="lazy"><div class="item-overlay"><span class="item-category">Megaverse</span><span class="item-title">Evening Ambiance</span></div></div>
+        <div class="gallery-item" data-category="megaverse"><img src="assets/imges/Megaverse-9.jpg" alt="Megaverse 9" loading="lazy"><div class="item-overlay"><span class="item-category">Megaverse</span><span class="item-title">Urban Oasis</span></div></div>
+        <div class="gallery-item" data-category="megaverse"><img src="assets/imges/Megaverse-10.jpg" alt="Megaverse 10" loading="lazy"><div class="item-overlay"><span class="item-category">Megaverse</span><span class="item-title">Sophistication</span></div></div>
+        <div class="gallery-item" data-category="megaverse"><img src="assets/imges/Megaverse-11.jpg" alt="Megaverse 11" loading="lazy"><div class="item-overlay"><span class="item-category">Megaverse</span><span class="item-title">Detailed Facade</span></div></div>
+        <div class="gallery-item" data-category="megaverse"><img src="assets/imges/Megaverse-12.jpg" alt="Megaverse 12" loading="lazy"><div class="item-overlay"><span class="item-category">Megaverse</span><span class="item-title">Final Perspective</span></div></div>
+
+        <!-- Miraya (12) -->
+        <div class="gallery-item" data-category="miraya"><img src="assets/imges/Mirya-1.jpg" alt="Miraya 1" loading="lazy"><div class="item-overlay"><span class="item-category">Miraya</span><span class="item-title">Luxury Residences</span></div></div>
+        <div class="gallery-item" data-category="miraya"><img src="assets/imges/Mirya-2.jpg" alt="Miraya 2" loading="lazy"><div class="item-overlay"><span class="item-category">Miraya</span><span class="item-title">Interior Elegance</span></div></div>
+        <div class="gallery-item" data-category="miraya"><img src="assets/imges/Mirya-3.jpg" alt="Miraya 3" loading="lazy"><div class="item-overlay"><span class="item-category">Miraya</span><span class="item-title">Modern Classic</span></div></div>
+        <div class="gallery-item" data-category="miraya"><img src="assets/imges/Mirya-4.jpg" alt="Miraya 4" loading="lazy"><div class="item-overlay"><span class="item-category">Miraya</span><span class="item-title">Premium Finishes</span></div></div>
+        <div class="gallery-item" data-category="miraya"><img src="assets/imges/Mirya-5.jpg" alt="Miraya 5" loading="lazy"><div class="item-overlay"><span class="item-category">Miraya</span><span class="item-title">Grand Entrance</span></div></div>
+        <div class="gallery-item" data-category="miraya"><img src="assets/imges/Mirya-6.jpg" alt="Miraya 6" loading="lazy"><div class="item-overlay"><span class="item-category">Miraya</span><span class="item-title">Master Design</span></div></div>
+        <div class="gallery-item" data-category="miraya"><img src="assets/imges/Mirya-7.jpg" alt="Miraya 7" loading="lazy"><div class="item-overlay"><span class="item-category">Miraya</span><span class="item-title">Serene Spaces</span></div></div>
+        <div class="gallery-item" data-category="miraya"><img src="assets/imges/Mirya-8.jpg" alt="Miraya 8" loading="lazy"><div class="item-overlay"><span class="item-category">Miraya</span><span class="item-title">Architectural Art</span></div></div>
+        <div class="gallery-item" data-category="miraya"><img src="assets/imges/Mirya-9.jpg" alt="Miraya 9" loading="lazy"><div class="item-overlay"><span class="item-category">Miraya</span><span class="item-title">Living Perfection</span></div></div>
+        <div class="gallery-item" data-category="miraya"><img src="assets/imges/Mirya-10.jpg" alt="Miraya 10" loading="lazy"><div class="item-overlay"><span class="item-category">Miraya</span><span class="item-title">Exclusive View</span></div></div>
+        <div class="gallery-item" data-category="miraya"><img src="assets/imges/Mirya-11.jpg" alt="Miraya 11" loading="lazy"><div class="item-overlay"><span class="item-category">Miraya</span><span class="item-title">Structural Beauty</span></div></div>
+        <div class="gallery-item" data-category="miraya"><img src="assets/imges/Mirya-12.jpg" alt="Miraya 12" loading="lazy"><div class="item-overlay"><span class="item-category">Miraya</span><span class="item-title">Final Touch</span></div></div>
+
+        <!-- Samarth (6) -->
+        <div class="gallery-item" data-category="samarth"><img src="assets/imges/Samarth-1.jpg" alt="Samarth 1" loading="lazy"><div class="item-overlay"><span class="item-category">Samarth</span><span class="item-title">Township Planning</span></div></div>
+        <div class="gallery-item" data-category="samarth"><img src="assets/imges/samarth-2.jpg" alt="Samarth 2" loading="lazy"><div class="item-overlay"><span class="item-category">Samarth</span><span class="item-title">Plotted Growth</span></div></div>
+        <div class="gallery-item" data-category="samarth"><img src="assets/imges/samarth-3.jpg" alt="Samarth 3" loading="lazy"><div class="item-overlay"><span class="item-category">Samarth</span><span class="item-title">Community Living</span></div></div>
+        <div class="gallery-item" data-category="samarth"><img src="assets/imges/samarth-4.jpg" alt="Samarth 4" loading="lazy"><div class="item-overlay"><span class="item-category">Samarth</span><span class="item-title">Sustainable Urbanism</span></div></div>
+        <div class="gallery-item" data-category="samarth"><img src="assets/imges/samarth-5.jpg" alt="Samarth 5" loading="lazy"><div class="item-overlay"><span class="item-category">Samarth</span><span class="item-title">Future Ready</span></div></div>
+        <div class="gallery-item" data-category="samarth"><img src="assets/imges/samart-5.jpg" alt="Samarth 6" loading="lazy"><div class="item-overlay"><span class="item-category">Samarth</span><span class="item-title">Prime Location</span></div></div>
+
+        <!-- Divine Bliss (3) -->
+        <div class="gallery-item" data-category="divine"><img src="assets/imges/divine-1.jpg" alt="Divine Bliss 1" loading="lazy"><div class="item-overlay"><span class="item-category">Divine Bliss</span><span class="item-title">Pure Luxury</span></div></div>
+        <div class="gallery-item" data-category="divine"><img src="assets/imges/divine-2.jpg" alt="Divine Bliss 2" loading="lazy"><div class="item-overlay"><span class="item-category">Divine Bliss</span><span class="item-title">Exquisite Detail</span></div></div>
+        <div class="gallery-item" data-category="divine"><img src="assets/imges/divine-3.jpg" alt="Divine Bliss 3" loading="lazy"><div class="item-overlay"><span class="item-category">Divine Bliss</span><span class="item-title">Sophisticated Style</span></div></div>
+
+        <!-- Tristar (4) -->
+        <div class="gallery-item" data-category="tristar"><img src="assets/imges/tristar-1.jpg" alt="Tristar 1" loading="lazy"><div class="item-overlay"><span class="item-category">Tristar</span><span class="item-title">Urban Residential</span></div></div>
+        <div class="gallery-item" data-category="tristar"><img src="assets/imges/tristar-2.jpg" alt="Tristar 2" loading="lazy"><div class="item-overlay"><span class="item-category">Tristar</span><span class="item-title">City Living</span></div></div>
+        <div class="gallery-item" data-category="tristar"><img src="assets/imges/tristar-3.jpg" alt="Tristar 3" loading="lazy"><div class="item-overlay"><span class="item-category">Tristar</span><span class="item-title">Modern Complex</span></div></div>
+        <div class="gallery-item" data-category="tristar"><img src="assets/imges/tristar-4.jpg" alt="Tristar 4" loading="lazy"><div class="item-overlay"><span class="item-category">Tristar</span><span class="item-title">Facade View</span></div></div>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <p>© 2026 The Digitech Solutions. All rights reserved.</p>
+          <p>Crafted for Real Estate Excellence</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const grid = document.getElementById('galleryGrid');
+
+            const applyFilter = (filter, animate = true) => {
+                // Update active button
+                filterBtns.forEach(btn => {
+                    if (btn.getAttribute('data-category') === filter) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+
+                if (animate) {
+                    grid.style.opacity = '0';
+                    setTimeout(() => {
+                        galleryItems.forEach(item => {
+                            if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                                item.classList.remove('hidden');
+                            } else {
+                                item.classList.add('hidden');
+                            }
+                        });
+                        grid.style.opacity = '1';
+                    }, 300);
+                } else {
+                    galleryItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.classList.remove('hidden');
+                        } else {
+                            item.classList.add('hidden');
+                        }
+                    });
+                }
+            };
+
+            // Check for URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const initialFilter = urlParams.get('filter') || 'all';
+            applyFilter(initialFilter, false);
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const filter = btn.getAttribute('data-category');
+                    applyFilter(filter);
+                    // Update URL without reload
+                    const newUrl = new URL(window.location);
+                    newUrl.searchParams.set('filter', filter);
+                    window.history.pushState({}, '', newUrl);
+                });
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
