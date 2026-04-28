@@ -74,16 +74,13 @@
       }
 
       .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 32px;
+        columns: 3;
+        column-gap: 32px;
         margin-bottom: 100px;
       }
       .gallery-item {
-        border-radius: 20px;
-        overflow: hidden;
-        background: var(--surface-2);
-        border: 1px solid var(--border-strong);
+        break-inside: avoid;
+        margin-bottom: 32px;
         position: relative;
         cursor: pointer;
         transition: all 0.5s var(--ease);
@@ -92,29 +89,28 @@
         display: none;
       }
       .gallery-item:hover {
-        border-color: var(--brand);
         transform: translateY(-8px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
       }
       .gallery-item img {
-        width: 100%;
+        max-width: 100%;
         height: auto;
         display: block;
-        transition: transform 0.8s var(--ease);
-      }
-      .gallery-item:hover img {
-        transform: scale(1.1);
+        border-radius: 12px;
+        transition: all 0.5s var(--ease);
       }
       
       @media (max-width: 960px) {
         .gallery-grid {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 20px;
+          columns: 2;
+          column-gap: 20px;
+        }
+        .gallery-item {
+          margin-bottom: 20px;
         }
       }
       @media (max-width: 640px) {
         .gallery-grid {
-          grid-template-columns: 1fr;
+          columns: 1;
         }
       }
     </style>
@@ -145,17 +141,23 @@
       <div class="tabs-wrapper">
         <div class="tabs-container">
           <button class="tab-btn active" data-filter="all">All Photos</button>
-          <button class="tab-btn" data-filter="corporate">Corporate</button>
-          <button class="tab-btn" data-filter="tech">Technology</button>
-          <button class="tab-btn" data-filter="retail">Retail & Commerce</button>
+          <button class="tab-btn" data-filter="thinking">thinking healer</button>
+          <button class="tab-btn" data-filter="deemax">DeeMax</button>
+          <button class="tab-btn" data-filter="devmantra">Dev mantra</button>
         </div>
       </div>
 
       <div class="container">
         <div class="gallery-grid" id="galleryGrid">
-          <div class="gallery-item" data-category="corporate"><img src="other_1_1777363468508.png" alt="Corporate Solutions" loading="lazy"></div>
-          <div class="gallery-item" data-category="tech"><img src="assets/imges/Megaverse-6.jpg" alt="Tech Innovation" loading="lazy"></div>
-          <div class="gallery-item" data-category="retail"><img src="assets/imges/Capri-7.jpg" alt="Retail Success" loading="lazy"></div>
+          <div class="gallery-item" data-category="thinking"><img src="assets/imges/other/thinkinghealer.jpeg" alt="Thinking Healer 1" loading="lazy"></div>
+          <div class="gallery-item" data-category="thinking"><img src="assets/imges/other/thinkinghealer.jpeg1.jpeg" alt="Thinking Healer 2" loading="lazy"></div>
+          <div class="gallery-item" data-category="thinking"><img src="assets/imges/other/thinkinghealer.jpeg2.jpeg" alt="Thinking Healer 3" loading="lazy"></div>
+          <div class="gallery-item" data-category="deemax"><img src="assets/imges/other/DeeMax1.jpeg" alt="DeeMax 1" loading="lazy"></div>
+          <div class="gallery-item" data-category="deemax"><img src="assets/imges/other/DeeMax2.jpeg" alt="DeeMax 2" loading="lazy"></div>
+          <div class="gallery-item" data-category="deemax"><img src="assets/imges/other/DeeMax3.jpeg" alt="DeeMax 3" loading="lazy"></div>
+          <div class="gallery-item" data-category="devmantra"><img src="assets/imges/other/Devmantra1.jpeg" alt="Dev mantra 1" loading="lazy"></div>
+          <div class="gallery-item" data-category="devmantra"><img src="assets/imges/other/Devmantra2.jpeg" alt="Dev mantra 2" loading="lazy"></div>
+          <div class="gallery-item" data-category="devmantra"><img src="assets/imges/other/Devmantra3.jpeg" alt="Dev mantra 3" loading="lazy"></div>
         </div>
       </div>
     </main>

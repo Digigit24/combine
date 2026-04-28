@@ -74,16 +74,13 @@
       }
 
       .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 32px;
+        columns: 3;
+        column-gap: 32px;
         margin-bottom: 100px;
       }
       .gallery-item {
-        border-radius: 20px;
-        overflow: hidden;
-        background: var(--surface-2);
-        border: 1px solid var(--border-strong);
+        break-inside: avoid;
+        margin-bottom: 32px;
         position: relative;
         cursor: pointer;
         transition: all 0.5s var(--ease);
@@ -92,29 +89,28 @@
         display: none;
       }
       .gallery-item:hover {
-        border-color: var(--brand);
         transform: translateY(-8px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
       }
       .gallery-item img {
-        width: 100%;
+        max-width: 100%;
         height: auto;
         display: block;
-        transition: transform 0.8s var(--ease);
-      }
-      .gallery-item:hover img {
-        transform: scale(1.1);
+        border-radius: 12px;
+        transition: all 0.5s var(--ease);
       }
       
       @media (max-width: 960px) {
         .gallery-grid {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 20px;
+          columns: 2;
+          column-gap: 20px;
+        }
+        .gallery-item {
+          margin-bottom: 20px;
         }
       }
       @media (max-width: 640px) {
         .gallery-grid {
-          grid-template-columns: 1fr;
+          columns: 1;
         }
       }
     </style>
@@ -145,17 +141,15 @@
       <div class="tabs-wrapper">
         <div class="tabs-container">
           <button class="tab-btn active" data-filter="all">All Photos</button>
-          <button class="tab-btn" data-filter="residential">Residential</button>
-          <button class="tab-btn" data-filter="commercial">Commercial</button>
-          <button class="tab-btn" data-filter="minimalist">Minimalist</button>
+          <button class="tab-btn" data-filter="Pparam">Pparam</button>
         </div>
       </div>
 
       <div class="container">
         <div class="gallery-grid" id="galleryGrid">
-          <div class="gallery-item" data-category="residential"><img src="interior_design_1_1777363406240.png" alt="Luxury Interior 1" loading="lazy"></div>
-          <div class="gallery-item" data-category="commercial"><img src="assets/imges/Capri-4.jpg" alt="Commercial Space" loading="lazy"></div>
-          <div class="gallery-item" data-category="minimalist"><img src="assets/imges/Mirya-6.jpg" alt="Minimalist Design" loading="lazy"></div>
+          <div class="gallery-item" data-category="Pparam"><img src="assets/imges/interior%20designers/interierdesigners.jpeg" alt="Pparam 1" loading="lazy"></div>
+          <div class="gallery-item" data-category="Pparam"><img src="assets/imges/interior%20designers/interierdesigners1.jpeg" alt="Pparam 2" loading="lazy"></div>
+          <div class="gallery-item" data-category="Pparam"><img src="assets/imges/interior%20designers/interierdesigners2.jpeg" alt="Pparam 3" loading="lazy"></div>
         </div>
       </div>
     </main>

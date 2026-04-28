@@ -117,6 +117,7 @@ body {
   font-feature-settings: "cv11", "ss01", "ss03";
   transition: background-color 0.4s var(--ease), color 0.4s var(--ease);
   overflow-x: hidden;
+  word-break: break-word;
 }
 
 img,
@@ -727,7 +728,7 @@ section {
 /* ------------  WORK GRID  ------------ */
 .work-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 28px;
 }
 
@@ -1655,7 +1656,7 @@ body.is-nav-open .nav-backdrop {
 
   /* Hero */
   .hero { padding: 48px 0 32px; }
-  .hero-title { font-size: clamp(34px, 9vw, 48px); }
+  .hero-title { font-size: clamp(34px, 9vw, 48px); line-height: 1.1; }
   .hero-sub { font-size: 15.5px; margin-bottom: 28px; }
   .hero-cta { margin-bottom: 40px; gap: 10px; }
   .hero-cta .btn { flex: 1; min-width: 0; }
@@ -1791,4 +1792,162 @@ body.is-nav-open {
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ================================================================
+   INDEX.HTML INTERNAL STYLES (Migrated for Cleanup)
+   ================================================================ */
+
+/* Let's Talk Section - High Fidelity Card */
+.contact-card {
+  background: white !important;
+  border-radius: 40px;
+  padding: 64px;
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 64px;
+  align-items: center;
+  color: #1e293b !important;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.1);
+}
+
+.contact-title {
+  font-size: clamp(32px, 4.5vw, 64px);
+  line-height: 1.1;
+  color: #0f172a !important;
+  margin-bottom: 24px;
+}
+
+.contact-description {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #475569 !important;
+  max-width: 500px;
+  margin-bottom: 40px;
+}
+
+.contact-info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.info-item a {
+  word-break: break-all;
+}
+
+.info-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #e0f2fe;
+  color: #0369a1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #bae6fd;
+}
+
+.contact-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px;
+  border-radius: 100px;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s var(--ease);
+  border: 1px solid #e2e8f0;
+}
+
+.btn-whatsapp {
+  background: linear-gradient(135deg, #0369a1, #7c3aed);
+  color: white;
+  border: none;
+  box-shadow: 0 10px 20px rgba(3, 105, 161, 0.2);
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(3, 105, 161, 0.3);
+}
+
+.btn-outline {
+  background: white;
+  color: #1e293b;
+}
+
+.btn-outline:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1024px) {
+  .contact-card {
+    grid-template-columns: 1fr;
+    padding: 48px;
+    gap: 48px;
+  }
+
+  .contact-actions {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact-card {
+    padding: 32px 24px;
+    border-radius: 24px;
+  }
+  
+  .contact-info-list {
+    gap: 16px;
+  }
+}
+
+/* Service List within Cards */
+.service-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px dashed var(--border);
+  padding-top: 20px;
+}
+
+.service-list li {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.service-list li::before {
+  content: "";
+  width: 12px;
+  height: 2px;
+  background: var(--brand);
+  border-radius: 2px;
 }

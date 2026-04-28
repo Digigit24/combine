@@ -1,197 +1,562 @@
 <!doctype html>
 <html lang="en" data-theme="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Hospital Portfolio Gallery — Healthcare Digital Solutions by The Digitech Solutions." />
-    <meta name="theme-color" content="#0B1120" />
-    <title>Hospital Portfolio Gallery — The Digitech Solutions</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="stylesheet" href="styles.css" />
-    <style>
-      .gallery-header {
-        padding: 80px 0 40px;
-        text-align: center;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Hospital Portfolio Gallery — Healthcare Digital Solutions by The Digitech Solutions." />
+  <meta name="theme-color" content="#0B1120" />
+  <title>Hospital Portfolio — The Digitech Solutions</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .gallery-header {
+      padding: 100px 0 40px;
+      text-align: center;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--brand);
+      text-decoration: none;
+      margin-bottom: 24px;
+      font-size: 14px;
+      transition: transform 0.2s;
+    }
+
+    .back-link:hover {
+      transform: translateX(-4px);
+    }
+
+    /* ── Filter Tabs (matching screenshot) ── */
+    .tabs-wrapper {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 40px 0;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 60px;
+    }
+
+    .tabs-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .tab-btn {
+      padding: 14px 28px;
+      border-radius: 100px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: white;
+      color: #1e293b;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .tab-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      border-color: var(--brand);
+    }
+
+    .tab-btn.active {
+      background: var(--brand);
+      color: white;
+      border-color: var(--brand);
+    }
+
+    /* ── Hospital Section Cards ── */
+    .hospital-section {
+      margin-bottom: 80px;
+      animation: fadeUp 0.6s var(--ease) both;
+    }
+
+    .hospital-section.hidden {
+      display: none;
+    }
+
+    .hospital-info {
+      margin-bottom: 32px;
+      border-left: 4px solid var(--brand);
+      padding-left: 24px;
+    }
+
+    .hospital-name {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .hospital-tag {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--brand);
+      font-weight: 700;
+    }
+
+    /* ── 3-Image Grid (Masonry) ── */
+    .image-grid {
+      columns: 3;
+      column-gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto 100px;
+    }
+
+    .image-card {
+      break-inside: avoid;
+      margin-bottom: 24px;
+      position: relative;
+      transition: all 0.4s var(--ease);
+    }
+
+    .image-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .image-card img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+      transition: all 0.5s var(--ease);
+    }
+
+    @media (max-width: 960px) {
+      .image-grid {
+        columns: 2;
+        column-gap: 20px;
       }
-      .back-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-weight: 600;
-        color: var(--brand);
-        text-decoration: none;
-        margin-bottom: 24px;
-        font-size: 14px;
-        transition: transform 0.2s;
+
+      .image-card {
+        margin-bottom: 20px;
       }
-      .back-link:hover {
-        transform: translateX(-4px);
+    }
+
+    @media (max-width: 640px) {
+      .image-grid {
+        columns: 1;
       }
-      
-      .tabs-wrapper {
-        background: rgba(255, 255, 255, 0.03);
-        padding: 40px 0;
-        border-top: 1px solid var(--border-subtle);
-        border-bottom: 1px solid var(--border-subtle);
+    }
+
+    /* ── Contact CTA inline ── */
+    .contact-card {
+      background: white !important;
+      border-radius: 40px;
+      padding: 64px;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 64px;
+      align-items: center;
+      color: #1e293b !important;
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-title {
+      font-size: clamp(28px, 3.5vw, 48px);
+      line-height: 1.1;
+      color: #0f172a !important;
+      margin-bottom: 24px;
+    }
+
+    .contact-description {
+      font-size: 17px;
+      line-height: 1.6;
+      color: #475569 !important;
+      max-width: 500px;
+      margin-bottom: 0;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 20px;
+      border-radius: 100px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s var(--ease);
+      border: 1px solid #e2e8f0;
+    }
+
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #0369a1, #7c3aed);
+      color: white;
+      border: none;
+      box-shadow: 0 10px 20px rgba(3, 105, 161, 0.2);
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px rgba(3, 105, 161, 0.3);
+    }
+
+    .btn-outline {
+      background: white;
+      color: #1e293b;
+    }
+
+    .btn-outline:hover {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+      transform: translateY(-2px);
+    }
+
+    /* ── Quick Contact Rail ── */
+    .quick-contact-rail {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 1000;
+    }
+
+    .qc-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s var(--ease);
+    }
+
+    .qc-btn:hover {
+      transform: scale(1.1) translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .qc-whatsapp {
+      background: #25D366;
+    }
+
+    .qc-call {
+      background: #00A8E8;
+    }
+
+    /* ── Animation ── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .contact-card {
+        grid-template-columns: 1fr;
+        padding: 48px;
+        gap: 48px;
+      }
+    }
+
+    @media (max-width: 960px) {
+      .image-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .image-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hospital-section {
         margin-bottom: 60px;
       }
+
       .tabs-container {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 16px;
-        max-width: 1000px;
-        margin: 0 auto;
+        gap: 8px;
       }
+
       .tab-btn {
-        padding: 14px 28px;
-        border-radius: 100px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        background: white;
-        color: #1e293b;
-        font-weight: 600;
-        font-size: 15px;
-        cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      }
-      .tab-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        border-color: var(--brand);
-      }
-      .tab-btn.active {
-        background: var(--brand);
-        color: white;
-        border-color: var(--brand);
+        padding: 10px 18px;
+        font-size: 13px;
       }
 
-      .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 32px;
-        margin-bottom: 100px;
+      .contact-card {
+        padding: 32px 24px;
+        border-radius: 24px;
       }
-      .gallery-item {
-        border-radius: 20px;
-        overflow: hidden;
-        background: var(--surface-2);
-        border: 1px solid var(--border-strong);
-        position: relative;
-        cursor: pointer;
-        transition: all 0.5s var(--ease);
-      }
-      .gallery-item.hidden {
-        display: none;
-      }
-      .gallery-item:hover {
-        border-color: var(--brand);
-        transform: translateY(-8px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-      }
-      .gallery-item img {
-        width: 100%;
-        height: auto;
-        display: block;
-        transition: transform 0.8s var(--ease);
-      }
-      .gallery-item:hover img {
-        transform: scale(1.1);
-      }
-      
-      @media (max-width: 960px) {
-        .gallery-grid {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 20px;
-        }
-      }
-      @media (max-width: 640px) {
-        .gallery-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container nav-inner">
-        <a class="brand" href="index.html">
-          <img class="brand-logo-img" src="logo-transferent.png" onerror="this.onerror=null;this.src='logo.svg';" alt="Digitech Solutions" width="320" height="85" />
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo-img" src="logo-transferent.png" onerror="this.onerror=null;this.src='logo.svg';"
+          alt="Digitech Solutions" width="320" height="85" />
+      </a>
+      <div class="nav-actions">
+        <a class="btn btn-primary" href="index.html#work">Back to Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="gallery-header">
+        <a href="index.html#work" class="back-link">
+          <span aria-hidden="true">←</span> Back to Portfolio
         </a>
-        <div class="nav-actions">
-           <a class="btn btn-primary" href="index.html#work">Back to Work</a>
-        </div>
+        <h1 class="section-title">Hospital <span class="serif-accent">Portfolio</span></h1>
+        <p class="section-sub">A comprehensive showcase of our marketing creatives and branding work.</p>
       </div>
-    </header>
+    </div>
 
-    <main>
+    <!-- ── Filter Tabs ── -->
+    <div class="tabs-wrapper">
+      <div class="tabs-container">
+        <button class="tab-btn active" data-filter="all">All Photos</button>
+        <button class="tab-btn" data-filter="gore">Gore Hospital</button>
+        <button class="tab-btn" data-filter="pulse">Pulse Hospital</button>
+        <button class="tab-btn" data-filter="nakshatra">Nakshatra Clinic</button>
+        <button class="tab-btn" data-filter="rasayu">Rasayu Cancer Clinic</button>
+        <button class="tab-btn" data-filter="thinkinghealer">Thinking Healer</button>
+        <button class="tab-btn" data-filter="hera">Hera Clinics</button>
+        <button class="tab-btn" data-filter="jeevisha">Jeevisha Pain Clinic</button>
+        <button class="tab-btn" data-filter="nrs">NRS Hospital</button>
+        <button class="tab-btn" data-filter="pune-neuro">pune neuro</button>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- ═══════ Gore Hospital (13) ═══════ -->
+      <section class="hospital-section" data-hospital="gore">
+        <div class="image-grid">
+          <div class="image-card"><img src="assets/imges/Hospital_imgs/gore1.jpeg" alt="Gore Hospital 1" loading="lazy">
+          </div>
+          <div class="image-card"><img src="assets/imges/Hospital_imgs/gore2.jpeg" alt="Gore Hospital 2" loading="lazy">
+          </div>
+          <div class="image-card"><img src="assets/imges/Hospital_imgs/gore3.jpeg" alt="Gore Hospital 3" loading="lazy">
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════ Pulse Hospital (12) ═══════ -->
+      <section class="hospital-section" data-hospital="pulse">
+        <div class="image-grid">
+          <div class="image-card"><img src="assets/imges/Hospital_imgs/pulse1.jpeg" alt="Pulse Hospital 1"
+              loading="lazy"></div>
+          <div class="image-card"><img src="assets/imges/Hospital_imgs/pulse2.jpeg" alt="Pulse Hospital 2"
+              loading="lazy"></div>
+          <div class="image-card"><img src="assets/imges/Hospital_imgs/pulse3.jpeg" alt="Pulse Hospital 3"
+              loading="lazy"></div>
+        </div>
+      </section>
+
+      <!-- ═══════ Nakshatra Clinic (9) ═══════ -->
+      <section class="hospital-section" data-hospital="nakshatra">
+        <div class="image-grid">
+          <div class="image-card"><img src="assets/imges/Hospital_imgs/nakshatra.jpeg" alt="Nakshatra Clinic 1"
+              loading="lazy"></div>
+          <div class="image-card"><img src="assets/imges/Hospital_imgs/nakshatra2.jpeg" alt="Nakshatra Clinic 2"
+              loading="lazy"></div>
+          <div class="image-card"><img src="assets/imges/Hospital_imgs/nakshatra3.jpeg" alt="Nakshatra Clinic 3"
+              loading="lazy"></div>
+        </div>
+      </section>
+
+      <!-- ═══════ Rasayu Cancer Clinic (12) ═══════ -->
+      <section class="hospital-section" data-hospital="rasayu">
+        <div class="image-grid">
+          <div class="image-card"><img src="assets/imges/Hospital_imgs/rasayu1.jpeg" alt="Rasayu Cancer Clinic 1"
+              loading="lazy"></div>
+          <div class="image-card"><img src="assets/imges/Hospital_imgs/rasayu2.jpeg" alt="Rasayu Cancer Clinic 2"
+              loading="lazy"></div>
+          <div class="image-card"><img src="assets/imges/Hospital_imgs/rasayu3.jpeg" alt="Rasayu Cancer Clinic 3"
+              loading="lazy"></div>
+        </div>
+      </section>
+
+      <!-- ═══════ Thinking Healer (10) ═══════ -->
+      <section class="hospital-section" data-hospital="thinkinghealer">
+        <div class="image-grid">
+          <div class="image-card"><img src="assets/imges/Hospital_imgs/thinkinghealer1.jpeg" alt="Thinking Healer 1"
+              loading="lazy"></div>
+          <div class="image-card"><img src="assets/imges/Hospital_imgs/thinkinghealer2.jpeg" alt="Thinking Healer 2"
+              loading="lazy"></div>
+          <div class="image-card"><img src="assets/imges/Hospital_imgs/thinkinghealer3.jpeg" alt="Thinking Healer 3"
+              loading="lazy"></div>
+        </div>
+      </section>
+
+      <!-- ═══════ Hera Clinics (5) ═══════ -->
+      <section class="hospital-section" data-hospital="hera">
+        <div class="image-grid">
+          <div class="image-card"><img src="assets/imges/Hospital_imgs/HeraClinic1.jpeg" alt="Hera Clinics 1"
+              loading="lazy"></div>
+          <div class="image-card"><img src="assets/imges/Hospital_imgs/HeraClinic2.jpeg" alt="Hera Clinics 2"
+              loading="lazy"></div>
+          <div class="image-card"><img src="assets/imges/Hospital_imgs/HeraClinic3.jpeg" alt="Hera Clinics 3"
+              loading="lazy"></div>
+        </div>
+      </section>
+
+      <!-- ═══════ Jeevisha Pain Clinic (4) ═══════ -->
+      <section class="hospital-section" data-hospital="jeevisha">
+        <div class="image-grid">
+          <div class="image-card"><img src="assets/imges/Hospital_imgs/jeevisha1.jpeg" alt="Jeevisha Pain Clinic 1"
+              loading="lazy"></div>
+          <div class="image-card"><img src="assets/imges/Hospital_imgs/jeevisha2.jpeg" alt="Jeevisha Pain Clinic 2"
+              loading="lazy"></div>
+          <div class="image-card"><img src="assets/imges/Hospital_imgs/jeevisha3.jpeg" alt="Jeevisha Pain Clinic 3"
+              loading="lazy"></div>
+        </div>
+      </section>
+
+      <!-- ═══════ NRS Hospital (3) ═══════ -->
+      <section class="hospital-section" data-hospital="nrs">
+        <div class="image-grid">
+          <div class="image-card"><img src="assets/imges/Hospital_imgs/nrshospital1.jpeg" alt="NRS Hospital 1"
+              loading="lazy"></div>
+          <div class="image-card"><img src="assets/imges/Hospital_imgs/nrshospital2.jpeg" alt="NRS Hospital 2"
+              loading="lazy"></div>
+          <div class="image-card"><img src="assets/imges/Hospital_imgs/nrshospital3.jpeg" alt="NRS Hospital 3"
+              loading="lazy"></div>
+        </div>
+      </section>
+
+      <!-- ═══════ Pune Neuro Hospital (3) ═══════ -->
+      <section class="hospital-section" data-hospital="pune-neuro">
+        <div class="image-grid">
+          <div class="image-card"><img src="assets/imges/Hospital_imgs/puneneuro1.jpeg" alt="Pune Neuro Hospital 1"
+              loading="lazy"></div>
+          <div class="image-card"><img src="assets/imges/Hospital_imgs/puneneuro2.jpeg" alt="Pune Neuro Hospital 2"
+              loading="lazy"></div>
+          <div class="image-card"><img src="assets/imges/Hospital_imgs/puneneuro3.jpeg" alt="Pune Neuro Hospital 3"
+              loading="lazy"></div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ── Let's Talk CTA ── -->
+    <section class="contact" id="contact" style="padding: 0 0 80px;">
       <div class="container">
-        <div class="gallery-header">
-          <a href="index.html#work" class="back-link">
-            <span aria-hidden="true">←</span> Back to Portfolio
-          </a>
-          <h1 class="section-title">Hospital <span class="serif-accent">Portfolio</span></h1>
-          <p class="section-sub">Healthcare Excellence · Patient-Centric Design</p>
+        <div class="contact-card">
+          <div class="contact-left">
+            <header class="section-head">
+              <div class="section-label">Let's Talk</div>
+              <h2 class="contact-title">
+                Ready to transform your <span class="serif-accent-italic">medical brand</span>?
+              </h2>
+            </header>
+            <p class="contact-description">
+              Whether you need a new website, better SEO, or patient growth strategies — we're here to help.
+            </p>
+          </div>
+          <div class="contact-right">
+            <div class="contact-actions">
+              <a href="https://wa.me/919822857421" class="contact-btn btn-whatsapp" target="_blank" rel="noopener">
+                WhatsApp Us
+              </a>
+              <a href="mailto:official@thedigitechsolutions.com" class="contact-btn btn-outline">
+                Email Us
+              </a>
+              <a href="tel:+919822857421" class="contact-btn btn-outline">
+                Call Us
+              </a>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
+  </main>
 
-      <div class="tabs-wrapper">
-        <div class="tabs-container">
-          <button class="tab-btn active" data-filter="all">All Photos</button>
-          <button class="tab-btn" data-filter="exterior">Exterior</button>
-          <button class="tab-btn" data-filter="interior">Interior</button>
-          <button class="tab-btn" data-filter="medical">Medical Tech</button>
-        </div>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>© 2026 The Digitech Solutions. All rights reserved.</p>
+        <p>Crafted for Healthcare Excellence</p>
       </div>
+    </div>
+  </footer>
 
-      <div class="container">
-        <div class="gallery-grid" id="galleryGrid">
-          <div class="gallery-item" data-category="exterior"><img src="hospital_portfolio_1_1777363341166.png" alt="Hospital Exterior" loading="lazy"></div>
-          <div class="gallery-item" data-category="interior"><img src="hospital_portfolio_2_1777363358850.png" alt="Hospital Interior" loading="lazy"></div>
-          <div class="gallery-item" data-category="medical"><img src="hospital_portfolio_3_1777363383276.png" alt="Medical Technology" loading="lazy"></div>
-        </div>
-      </div>
-    </main>
+  <!-- Floating Quick Contact -->
+  <div class="quick-contact-rail">
+    <a href="https://wa.me/919822857421" class="qc-btn qc-whatsapp" aria-label="WhatsApp Us" target="_blank">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.394 0 12.03c0 2.119.554 4.188 1.607 6.04L0 24l6.117-1.605a11.803 11.803 0 005.925 1.597h.005c6.635 0 12.033-5.395 12.036-12.032a11.84 11.84 0 00-3.527-8.49" />
+      </svg>
+    </a>
+    <a href="tel:+919822857421" class="qc-btn qc-call" aria-label="Call Us">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path
+          d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+      </svg>
+    </a>
+  </div>
 
-    <footer class="site-footer">
-      <div class="container">
-        <div class="footer-bottom">
-          <p>© 2026 The Digitech Solutions. All rights reserved.</p>
-          <p>Crafted for Healthcare Excellence</p>
-        </div>
-      </div>
-    </footer>
+  <!-- ── Filter Logic ── -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const sections = document.querySelectorAll('.hospital-section');
 
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const galleryItems = document.querySelectorAll('.gallery-item');
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Update active tab
+          tabBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
 
-        tabBtns.forEach(btn => {
-          btn.addEventListener('click', () => {
-            tabBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+          const filter = btn.getAttribute('data-filter');
 
-            const filter = btn.getAttribute('data-filter');
-
-            galleryItems.forEach(item => {
-              if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                item.classList.remove('hidden');
-              } else {
-                item.classList.add('hidden');
-              }
-            });
+          sections.forEach((section, i) => {
+            if (filter === 'all' || section.getAttribute('data-hospital') === filter) {
+              section.classList.remove('hidden');
+              section.style.animationDelay = `${i * 0.08}s`;
+            } else {
+              section.classList.add('hidden');
+            }
           });
         });
       });
-    </script>
-    <script src="script.js"></script>
-  </body>
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+
 </html>
