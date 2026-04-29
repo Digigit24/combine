@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "jetro": {
+      "command": "C:\\Users\\PC\\.jetro\\runtime\\node-win32-x64.exe",
+      "args": [
+        "C:\\Users\\PC\\.jetro\\mcp-server\\index.js"
+      ],
+      "env": {
+        "JET_WORKSPACE": "d:\\Office Work\\combine",
+        "JET_API_URL": "https://api.jetro.ai",
+        "JET_JWT": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjJiMzZhYjQxYTczOTJlMTRlNjM1ZmRlM2M2YWYwOWZlYmFhM2YyZDYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vamV0cm8tY2RhZWYiLCJhdWQiOiJqZXRyby1jZGFlZiIsImF1dGhfdGltZSI6MTc3NzQzMzk3OCwidXNlcl9pZCI6IndRTWI1akRVd0FPTXU3b2pscHpRQW8weVFOejEiLCJzdWIiOiJ3UU1iNWpEVXdBT011N29qbHB6UUFvMHlRTnoxIiwiaWF0IjoxNzc3NDQwMDI1LCJleHAiOjE3Nzc0NDM2MjUsImVtYWlsIjoiYWRpc2hpbmRlMjAwOEBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJhZGlzaGluZGUyMDA4QGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.HAKL-_ytH3GlWKrsMNYkBZGIekbpdoQREtwNQa_lvhyoRSEaXFT9irJgNgKbKUM1qvRedoCAOHXaQx_QhfF0JOPQC7pFiSQzDe9smZGrmZuJme3EMuMr7GpKj75pke4fNW5pBj2GPkEJ8Ee-dKdb3mM52tb8fWmEZvEMMFIKW0uni3bcyadliXsgGwI_DxKDRBuDHBG9N8fsTz0s61vitsGC_m5c_OW729NUm6e8Jdx1WunZcf8yCIKxTo002d1hFt4pbxJT6mpTqZICzMZkrQFEKNcUB00zkOngQ7x9QJzwdCFmqxpTzfQoR0bv2-8l7wNPr6v-SpHJNvSuCI3t-Q",
+        "PATH": "C:\\Users\\PC\\.jetro\\runtime;C:\\Program Files\\Microsoft\\jdk-11.0.16.101-hotspot\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\130\\Tools\\Binn\\;C:\\Program Files\\Microsoft\\Web Platform Installer\\;C:\\Program Files (x86)\\Microsoft ASP.NET\\ASP.NET Web Pages\\v1.0\\;C:\\Program Files (x86)\\Windows Kits\\8.0\\Windows Performance Toolkit\\;C:\\Program Files\\Microsoft SQL Server\\110\\Tools\\Binn\\;C:\\Program Files\\Git\\cmd\\;C:\\Program Files\\nodejs\\;C:\\Users\\PC\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\;C:\\Users\\PC\\AppData\\Local\\Programs\\Python\\Python312\\;C:\\Users\\PC\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\Git\\bin\\;C:\\Users\\PC\\AppData\\Roaming\\npm;C:\\Users\\PC\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\PC\\AppData\\Local\\Programs\\Antigravity\\bin;C:\\Users\\PC\\AppData\\Local\\Programs\\Ollama;"
+      }
+    }
+  }
+}

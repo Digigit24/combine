@@ -157,76 +157,7 @@
       }
     }
 
-    /* ── Contact CTA inline ── */
-    .contact-card {
-      background: white !important;
-      border-radius: 40px;
-      padding: 64px;
-      display: grid;
-      grid-template-columns: 1fr 400px;
-      gap: 64px;
-      align-items: center;
-      color: #1e293b !important;
-      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.1);
-    }
 
-    .contact-title {
-      font-size: clamp(28px, 3.5vw, 48px);
-      line-height: 1.1;
-      color: #0f172a !important;
-      margin-bottom: 24px;
-    }
-
-    .contact-description {
-      font-size: 17px;
-      line-height: 1.6;
-      color: #475569 !important;
-      max-width: 500px;
-      margin-bottom: 0;
-    }
-
-    .contact-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .contact-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      padding: 20px;
-      border-radius: 100px;
-      font-size: 16px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.3s var(--ease);
-      border: 1px solid #e2e8f0;
-    }
-
-    .btn-whatsapp {
-      background: linear-gradient(135deg, #0369a1, #7c3aed);
-      color: white;
-      border: none;
-      box-shadow: 0 10px 20px rgba(3, 105, 161, 0.2);
-    }
-
-    .btn-whatsapp:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 15px 30px rgba(3, 105, 161, 0.3);
-    }
-
-    .btn-outline {
-      background: white;
-      color: #1e293b;
-    }
-
-    .btn-outline:hover {
-      background: #f8fafc;
-      border-color: #cbd5e1;
-      transform: translateY(-2px);
-    }
 
     /* ── Quick Contact Rail ── */
     .quick-contact-rail {
@@ -279,13 +210,7 @@
     }
 
     /* ── Responsive ── */
-    @media (max-width: 1024px) {
-      .contact-card {
-        grid-template-columns: 1fr;
-        padding: 48px;
-        gap: 48px;
-      }
-    }
+
 
     @media (max-width: 960px) {
       .image-grid {
@@ -311,10 +236,7 @@
         font-size: 13px;
       }
 
-      .contact-card {
-        padding: 32px 24px;
-        border-radius: 24px;
-      }
+
     }
   </style>
 </head>
@@ -471,37 +393,7 @@
 
     </div>
 
-    <!-- ── Let's Talk CTA ── -->
-    <section class="contact" id="contact" style="padding: 0 0 80px;">
-      <div class="container">
-        <div class="contact-card">
-          <div class="contact-left">
-            <header class="section-head">
-              <div class="section-label">Let's Talk</div>
-              <h2 class="contact-title">
-                Ready to transform your <span class="serif-accent-italic">medical brand</span>?
-              </h2>
-            </header>
-            <p class="contact-description">
-              Whether you need a new website, better SEO, or patient growth strategies — we're here to help.
-            </p>
-          </div>
-          <div class="contact-right">
-            <div class="contact-actions">
-              <a href="https://wa.me/919822857421" class="contact-btn btn-whatsapp" target="_blank" rel="noopener">
-                WhatsApp Us
-              </a>
-              <a href="mailto:official@thedigitechsolutions.com" class="contact-btn btn-outline">
-                Email Us
-              </a>
-              <a href="tel:+919822857421" class="contact-btn btn-outline">
-                Call Us
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+
   </main>
 
   <footer class="site-footer">
